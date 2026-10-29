@@ -33,12 +33,12 @@
   table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:16.5px; margin-top:8px; }
   th { background:#f0f2f5; padding:7px 4px; text-align:left; font-weight:700; border-bottom:2px solid #e0e3e8; }
   td { padding:7px 4px; font-weight:600; border-bottom:1px solid #eee; word-break:break-all; }
+  /* 列序（2026-10-30 调整）：# | 掉落 | 首领 | 时间 | 概率 | 倒计时 */
   th:nth-child(1), td:nth-child(1) { width:7%; }
-  th:nth-child(2), td:nth-child(2) { width:24%; }
-  th:nth-child(3), td:nth-child(3) { width:19%; text-align:center; }
-  th:nth-child(4), td:nth-child(4) { width:15%; text-align:center; }
-  /* 「掉落」列（2026-10-30 新增）：与行底色同档的金/粉/紫三色文字 */
-  th:nth-child(5), td:nth-child(5) { width:13%; text-align:center; }
+  th:nth-child(2), td:nth-child(2) { width:13%; text-align:center; }
+  th:nth-child(3), td:nth-child(3) { width:24%; }
+  th:nth-child(4), td:nth-child(4) { width:19%; text-align:center; }
+  th:nth-child(5), td:nth-child(5) { width:15%; text-align:center; }
   th:nth-child(6), td:nth-child(6) { width:22%; text-align:center; }
   tr:hover { background:#fafafa; }
   .day-block { margin-top:22px; background:#ffffff; border-radius:8px; padding:12px 14px 10px;
@@ -66,14 +66,14 @@
     #voicecfg { line-height:2; }
     table { font-size:18px; }
     th, td { padding:4px 6px; }
-    /* 手机端 6 列偏挤：收紧列宽 + 「掉落」列缩字号，保证一行放得下不换行 */
+    /* 手机端 6 列偏挤：收紧列宽。字体与其它列保持一致（不再单独缩小「掉落」列） */
     th:nth-child(1), td:nth-child(1) { width:6%; }
-    th:nth-child(2), td:nth-child(2) { width:24%; }
-    th:nth-child(3), td:nth-child(3) { width:18%; }
-    th:nth-child(4), td:nth-child(4) { width:14%; }
-    th:nth-child(5), td:nth-child(5) { width:13%; }
+    th:nth-child(2), td:nth-child(2) { width:13%; }
+    th:nth-child(3), td:nth-child(3) { width:24%; }
+    th:nth-child(4), td:nth-child(4) { width:18%; }
+    th:nth-child(5), td:nth-child(5) { width:14%; }
     th:nth-child(6), td:nth-child(6) { width:25%; }
-    th:nth-child(5), td:nth-child(5) { font-size:14px; white-space:nowrap; }
+    th:nth-child(2), td:nth-child(2) { white-space:nowrap; }
     .day-block { padding:12px 10px 10px; }
     .day-title { font-size:16px; }
   }
@@ -82,7 +82,7 @@
 <body>
 <div class="container">
   <h1>天堂2盟约 BOSS 刷新时间表</h1>
-  <div class="meta">报告生成时间：2026-10-30 01:52:09（重新运行脚本可读取最新游戏数据）</div>
+  <div class="meta">报告生成时间：2026-10-30 01:59:28（重新运行脚本可读取最新游戏数据）</div>
   <div class="meta" id="buildTag" style="font-size:12px;color:#888"></div>
   <div class="meta" id="clock">当前北京时间：加载中…</div>
   <div class="meta" id="status">实时刷新中…</div>
@@ -112,28 +112,28 @@
   <div class="day-block" id="day-0">
   <h2 class="day-title">10月30日（今天）</h2>
   <table>
-    <thead><tr><th>#</th><th>首领</th><th>时间</th><th>概率</th><th>掉落</th><th>倒计时</th></tr></thead>
+    <thead><tr><th>#</th><th>掉落</th><th>首领</th><th>时间</th><th>概率</th><th>倒计时</th></tr></thead>
     <tbody id="rows-0"></tbody>
   </table>
 </div>
 <div class="day-block" id="day-1">
   <h2 class="day-title">10月31日（明天）</h2>
   <table>
-    <thead><tr><th>#</th><th>首领</th><th>时间</th><th>概率</th><th>掉落</th><th>倒计时</th></tr></thead>
+    <thead><tr><th>#</th><th>掉落</th><th>首领</th><th>时间</th><th>概率</th><th>倒计时</th></tr></thead>
     <tbody id="rows-1"></tbody>
   </table>
 </div>
 <div class="day-block" id="day-2">
   <h2 class="day-title">11月1日</h2>
   <table>
-    <thead><tr><th>#</th><th>首领</th><th>时间</th><th>概率</th><th>掉落</th><th>倒计时</th></tr></thead>
+    <thead><tr><th>#</th><th>掉落</th><th>首领</th><th>时间</th><th>概率</th><th>倒计时</th></tr></thead>
     <tbody id="rows-2"></tbody>
   </table>
 </div>
 <div class="day-block" id="day-3">
   <h2 class="day-title">11月2日</h2>
   <table>
-    <thead><tr><th>#</th><th>首领</th><th>时间</th><th>概率</th><th>掉落</th><th>倒计时</th></tr></thead>
+    <thead><tr><th>#</th><th>掉落</th><th>首领</th><th>时间</th><th>概率</th><th>倒计时</th></tr></thead>
     <tbody id="rows-3"></tbody>
   </table>
 </div>
@@ -710,10 +710,10 @@ function render(){
       const dropHtml = '<span style="color:' + (e.drop_color || '#6a3fb5') + '">'
                      + (e.drop_label || '其他') + '</span>';
       tr.innerHTML = '<td style="border-left:' + borderLeft + '">' + idx + '</td>'
+                   + '<td style="text-align:center">' + dropHtml + '</td>'
                    + '<td>' + nm + '</td>'
                    + '<td>' + e.time + '</td>'
                    + '<td style="color:' + probColor + ';font-weight:700">' + e.prob_label + '</td>'
-                   + '<td style="text-align:center">' + dropHtml + '</td>'
                    + '<td style="color:' + cdColor + ';font-weight:' + fontW + '">' + cd + '</td>';
       tbody.appendChild(tr);
     });
@@ -772,7 +772,7 @@ if (_vtestEnvEl){
 }
 // 版本自检：静默拉取线上最新 HTML（no-store + 时间戳绕过 CDN/浏览器缓存），
 // 构建时间戳变化 → 自动强制刷新页面，访客无需手动刷新即可拿到最新推送数据
-const BUILD_TS = 1793296329579;
+const BUILD_TS = 1793296768497;
 
 // —— 缓存自愈（2026-10-19）——
 // GitHub Pages 强制返回 Cache-Control: max-age=600，微信内置浏览器缓存更顽固，
