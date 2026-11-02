@@ -97,6 +97,7 @@
 </style>
 </head>
 <body>
+<!--
 <div id="loginGate" style="position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,#0d1b2a,#16283e);display:flex;align-items:center;justify-content:center;font-family:system-ui,'Microsoft YaHei',sans-serif">
   <div style="background:rgba(19,36,58,.92);padding:30px 34px;border-radius:16px;box-shadow:0 12px 48px rgba(0,0,0,.55);text-align:center;width:340px">
     <div style="font-size:21px;font-weight:700;color:#e8f0f7;margin-bottom:4px">天堂2盟约 BOSS 战报</div>
@@ -120,6 +121,7 @@
     <div id="gateNoAccess" style="display:none;color:#ffd2d2;font-size:14px;line-height:1.7;margin-top:6px"></div>
   </div>
 </div>
+-->
 
 
 <div id="appMain">
@@ -928,10 +930,13 @@ setInterval(safeRender, 1000);
 safeRender();
 
 </script>
+<!--
 <!-- 云端账号 SDK（CDN）：@tencent-ai/workbuddy-cloud-sdk，全局 WorkBuddyCloud；
      endpoint 绑定 t2boss.app.workbuddy.host；登录仅在 WorkBuddy 域名生效，GitHub Pages 那份会失效 -->
 <script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"></script>
+-->
 
+<!--
 <script>(function(){
   if (typeof WorkBuddyCloud === 'undefined') {
     document.getElementById('gateErr').textContent = '登录组件加载失败，请检查网络后刷新';
@@ -1181,6 +1186,7 @@ safeRender();
     hideApp();
   })();
 })();</script>
+-->
 
 </body>
 </html>
